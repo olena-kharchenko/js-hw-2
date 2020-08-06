@@ -28,14 +28,13 @@
 
 function isLoginValid(login, min = 4, max = 16) {
   // Write code under this line
-  const result = login.length >= min && login.length <= max ? true : false;
-  return result;
+  return login.length >= min && login.length <= max;
 }
 
 function isLoginUnique(allLogins, login) {
   // Write code under this line
-  const result = allLogins.includes(login) ? false : true;
-  return result;
+
+  return !allLogins.includes(login);
 }
 
 function addLogin(allLogins, login) {
@@ -44,20 +43,16 @@ function addLogin(allLogins, login) {
   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
   let message;
   // Write code under this line
-  if (isLoginValid(login) === false) {
-    message = ERROR;
-    return message;
+  if (!isLoginValid(login)) {
+    return ERROR;
   }
 
-  if (isLoginUnique(allLogins, login) === false) {
-    message = REFUSAL;
-    return message;
+  if (!isLoginUnique(allLogins, login)) {
+    return REFUSAL;
   }
 
   allLogins.push(login);
-  message = SUCCESS;
-
-  return message;
+  return SUCCESS;
 }
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
